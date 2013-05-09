@@ -15,6 +15,8 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.tmx.constant.TMXConstant;
+
 public class TestRegister {
 
 	WebDriver driver = null;
@@ -23,7 +25,7 @@ public class TestRegister {
 	public void setUp() {
 		driver = new FirefoxDriver();
 		driver.manage().window().maximize();
-		driver.get("https://secure.truemoney-dev.com/tmxonline11-devpoc/home");
+		driver.get(TMXConstant.TMX_HOME_URL);
 	}
 
 	private ExpectedCondition<WebElement> visibilityOfElementLocated(final By by) {
@@ -113,7 +115,7 @@ public class TestRegister {
 		codeTextbox.sendKeys("ยกเลิกนะ");
 		cancelButton.click();
 
-		assertEquals("https://secure.truemoney-dev.com/tmxonline11-devpoc/index.php", driver.getCurrentUrl()) ;
+		assertEquals(TMXConstant.TMX_INDEX_URL, driver.getCurrentUrl()) ;
 	}
 
 	@After
