@@ -157,6 +157,34 @@ public class TestTopUp {
 
 	}
 
+	@Test
+	public void previewTopUpDetailInPopUpPage() {
+		WebElement pinTextBox = driver.findElement(By.id("pin"));
+		WebElement ref1TextBox = driver.findElement(By.id("ref1"));
+		WebElement amountTextBox = driver.findElement(By.id("amount"));
+		WebElement amountReceiveTextBox = driver.findElement(By.id("amount_receive"));
+		WebElement submitButton = driver.findElement(By.id("btn_submit"));
+
+		pinTextBox.sendKeys("111");
+		ref1TextBox.sendKeys("1111111111");
+		amountTextBox.sendKeys("500");
+		amountReceiveTextBox.sendKeys("500");
+		submitButton.click();
+
+		// Verify data in popup page
+		WebElement confirmButton = driver.findElement(By.id("btn_confirm"));
+
+		assertEquals("1111111111", driver.findElement(By.id("ref1_show")).getText());
+		assertEquals("500.00", driver.findElement(By.id("amount_show")).getText());
+		assertEquals("0.00", driver.findElement(By.xpath("//tr/td[@class='font_bill']")).getText());
+		assertEquals("500.00", driver.findElement(By.id("total_amount_show")).getText());
+		assertEquals("500.00", driver.findElement(By.id("amount_receive_show")).getText());
+		assertEquals("0.00", driver.findElement(By.id("amount_change_show")).getText());
+
+		confirmButton.click();
+
+	}
+
 	@After
 	public void tearDown() {
 		driver.close();
