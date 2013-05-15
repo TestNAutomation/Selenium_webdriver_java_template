@@ -5,8 +5,10 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -47,12 +49,14 @@ public class TestBuyTrueMoneyCashCardPartialWithData {
 	}
 
 	@Parameters
-	public static Collection testData() throws IOException {
-		// return getData();
-		return getDataFromCSV("D:\\Somkiat\\training\\selinium\\data_test\\data_test.csv");
+	public static Collection testData() throws Exception {
+//		return getData();
+		 return
+		 getDataFromCSV("D:\\Somkiat\\training\\selinium\\workspace\\Selenium_webdriver_java_template\\data_test\\data_test.csv");
+		// return
 	}
 
-	private static Collection getData(String fileName) {
+	private static Collection getData() {
 		return Arrays.asList(new Object[][] { { "123", "150", "200", "0", "150", "50" }, { "123", "50", "500", "0", "50", "450" }, { "123", "90", "90", "0", "90", "0" },
 		// { "123", "100", "100", "0", "100", "0" },
 				});
@@ -68,11 +72,6 @@ public class TestBuyTrueMoneyCashCardPartialWithData {
 			inputList.add(fields);
 		}
 		file.close();
-		return inputList;
-	}
-
-	private static Collection<String[]> getDataFromExcel() {
-		List<String[]> inputList = new ArrayList<String[]>();
 		return inputList;
 	}
 
